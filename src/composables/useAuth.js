@@ -80,7 +80,7 @@ export default function useAuth() {
     }
 
     const isLoggedIn = () => {
-        return auth.value != null && auth.value != 'null'
+        return auth.value && auth.value != null && auth.value != 'null'
     }
 
     const checkAutoLogin = () => {
