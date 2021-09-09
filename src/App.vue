@@ -1,30 +1,53 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+
+  <div id="nav" class="w-1/3 mx-auto bg-white shadow-card p-4 text-black mt-4 flex justify-around">
+    <template v-if="!isLoggedIn()">
+      <router-link :to="{ name: 'Login' }">Login</router-link> 
+      <router-link :to="{ name: 'Register' }">Register</router-link> 
+    </template>
+
+    <template v-else>
+      <router-link :to="{ name: 'Home' }">Home</router-link> 
+      <a href="#" @click.prevent="logoutAndRedirect">Logout</a> 
+    </template>
+
   </div>
-  <router-view/>
+
+  <div class="app" style="min-height: 600px">
+    <router-view/>
+  </div>
+
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
+import { onBeforeMount } from 'vue'
+import useAuth from '@/composables/useAuth'
+import { useRouter } from 'vue-router'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  
+  setup() {
+    
+    const { checkAutoLogin, logout, isLoggedIn } = useAuth()
+    const router = useRouter()
+    
+    const logoutAndRedirect = async () => {
+      await logout()
+      router.push({ name: 'Login' })
     }
+    
+    onBeforeMount(() => {
+      checkAutoLogin()
+    })
+
+    return {
+      logout,
+      isLoggedIn,
+      logoutAndRedirect
+    }
+
   }
+
 }
-</style>
+</script>

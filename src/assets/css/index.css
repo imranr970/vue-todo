@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.border-b-half {
+    border-bottom-width: 0.5px;
+}
