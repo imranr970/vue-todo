@@ -1,11 +1,13 @@
 <template>
 
     <div class="flex">
+
         <label :for="item.id" :class="isCompletedClasses(item)" class="flex-grow">
             <input 
             type="checkbox" 
             name="" 
             :id="item.id" 
+            :checked="item.isCompleted != 0"
             @change="markCompleteTodo({ id: item.id, completed: $event.target.checked })">
             {{ item.title }}
         </label>

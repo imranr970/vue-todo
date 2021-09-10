@@ -76,7 +76,6 @@ export default function useTodo() {
     }
 
     const saveEditTodo = () => {
-      console.log("I was here")
       const itemIndex = findItemIndex()
 
       axios.post(`todo/edit/${editing.item.id}`, { ...editing.item })
@@ -103,8 +102,7 @@ export default function useTodo() {
         title: todoItem.title,
         isCompleted: completed
       })
-      .then((data) => {
-        console.log(data)
+      .then(() => {
         todoItem.isCompleted = completed
       })
       .catch((err) => {
