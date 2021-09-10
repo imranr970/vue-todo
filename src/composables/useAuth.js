@@ -31,7 +31,6 @@ export default function useAuth() {
         })
         .catch((err) => {
             loading.value = false
-            console.log(err.response.status)
             if(err.response.status == 401 || err.response.status == 500) {
                 errors.value = {
                     email: ['Email or password is wrong']

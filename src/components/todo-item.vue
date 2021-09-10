@@ -27,8 +27,8 @@
             const { markCompleteTodo } = useTodo()
 
             const isCompletedClasses = (item) => [
-                {'line-through': item.isCompleted },
-                {'text-gray-400': item.isCompleted }
+                {'line-through': item.isCompleted != 0 },
+                {'text-gray-400': item.isCompleted != 0 }
             ]
             
             return { markCompleteTodo, isCompletedClasses }

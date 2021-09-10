@@ -31,7 +31,7 @@ export default function useTodo() {
     }) 
 
 
-    const addTodo = async () => {
+    const addTodo = () => {
 
       if(!item.value || item.value == null || item.value === '') return 
 

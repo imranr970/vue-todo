@@ -126,6 +126,7 @@
       })
 
       const isEditing = (id) => {
+        console.log(editing.state && editing.item.id === id)
         return editing.state && editing.item.id === id
       }
 
