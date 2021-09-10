@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="w-1/3 mx-auto bg-white shadow-card p-4 text-black mt-4 flex justify-around">
+  <div id="nav" class="card text-black mt-4 flex justify-around">
     <template v-if="!isLoggedIn()">
       <router-link :to="{ name: 'Login' }">Login</router-link> 
       <router-link :to="{ name: 'Register' }">Register</router-link> 

@@ -4,13 +4,13 @@
 
       <h1 class="text-5xl text-center font-bold py-3 pb-6">Vue Todo App</h1>    
 
-      <div class="w-1/3 mx-auto bg-white shadow-card p-4 text-red my-4" v-if="error">
+      <div class="card text-red my-4" v-if="error">
         {{ error }}
       </div>
 
       <form action="#" @submit.prevent="addTodo">
 
-        <div class="bg-white shadow-card p-4 text-black m-4 mx-auto w-1/3 flex">
+        <div class="card shadow-card p-4 text-black flex">
           
           <input 
           type="text" 
@@ -31,7 +31,7 @@
       </form>
 
       <template v-if="loading">
-        <div class="w-1/3 mx-auto bg-white shadow-card p-4 text-black my-4">
+        <div class="card text-black my-4">
           <font-awesome-icon icon="spinner" class="fa-spin" />
         </div>
       </template>

@@ -5,7 +5,7 @@
     <li 
     v-for="item in todoList"
     :key="item.id"
-    class="w-1/3 mx-auto bg-white shadow-card p-4 text-black my-4">
+    class="card text-black my-4">
         
       <todo-item :item="item" />
 

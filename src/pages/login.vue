@@ -2,7 +2,7 @@
     
     <main class="login-page flex justify-center items-center h-screen">
 
-      <div class="w-1/3 rounded shadow-card">
+      <div class="card rounded">
         
         <div class="p-8 text-left">
           

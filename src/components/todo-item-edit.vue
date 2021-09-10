@@ -34,8 +34,8 @@ import useTodo from '@/composables/useTodo'
 export default {
 
     setup() {
-        const { editing, setEditing } = useTodo()
-        return { editing, setEditing }
+        const { editing, setEditing, saveEditTodo } = useTodo()
+        return { editing, setEditing, saveEditTodo }
     }
 }
 
