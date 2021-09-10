@@ -1,19 +1,22 @@
 <template>
-    <label :for="item.id" :class="isCompletedClasses(item)">
-        <input 
-        type="checkbox" 
-        name="" 
-        :id="item.id" 
-        @change="markCompleteTodo({ id: item.id, completed: $event.target.checked })">
-        {{ item.title }}
-    </label>
+
+    <todo-item-edit v-if="isEditing(item.id)" />
+    <todo-item-view :item="item" v-else />
+
 </template>
 
 <script>
 
     import useTodo from '@/composables/useTodo'
+    import todoItemEdit from './todo-item-edit'
+    import todoItemView from './todo-item-view'
     
     export default {
+
+        components: {
+            todoItemEdit,
+            todoItemView
+        },
 
         props: {
             item: {
@@ -24,14 +27,15 @@
 
         setup() {
 
-            const { markCompleteTodo } = useTodo()
+            const { editing } = useTodo()
 
-            const isCompletedClasses = (item) => [
-                {'line-through': item.isCompleted != 0 },
-                {'text-gray-400': item.isCompleted != 0 }
-            ]
-            
-            return { markCompleteTodo, isCompletedClasses }
+            const isEditing = (id) => {
+                return editing.state && editing.item.id === id
+            }
+
+            return { 
+                isEditing
+            }
 
         }
     }
